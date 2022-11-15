@@ -1,16 +1,10 @@
-# This is a sample Python script.
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+print("Bienvenido al juego de gato")
+print("\n\n\nElija una de las siguientes opciones: ")
+print("\n")
+print("1) Jugador vs Jugador")
+print("2) Jugador vs CPU")
+print("3) Salir")
 
+opcion = input("Ingrese una opcion: ")
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('Proyecto')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
