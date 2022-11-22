@@ -17,13 +17,14 @@ def menu_CPU():
 
 
 
-#valido = False
+
 
 while (True):
     print("\n\n")
     menu_principal()
     opcion = input("Ingrese una opcion: ")
     if (opcion == "1"):
+        #cambiar
         print(" ")
     elif (opcion == "2"):
         print("\n\n")
@@ -31,10 +32,13 @@ while (True):
             menu_CPU()
             opcion = input("Ingrese una opcion: ")
             if(opcion == "1"):
+                #cambiar
                 print(" ")
             elif (opcion == "2"):
+                #cambiar
                 print(" ")
             elif (opcion == "3"):
+                #cambiar
                 print(" ")
             elif (opcion == "4"):
                 break
@@ -45,7 +49,7 @@ while (True):
     elif (opcion == "3"):
         break
     else:
-        #valido = True
+
         print("Opcion incorrecta, imgrese una opcion valida ")
         print("\n\n")
 
