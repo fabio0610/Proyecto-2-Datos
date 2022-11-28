@@ -5,12 +5,21 @@ import random
 class Juego():
 
     def __init__(self):
+        """
+        Se da el constructor donde se inicializa un nuevo juego
+        """
         self.nuevo_juego()
 
     def nuevo_juego(self):
+        """
+        La función de nuevo juego llama a la creación de un tablero
+        """
         self.tablero = Tablero()
 
     def elige_ficha(self):
+        """
+        Mediante esta función se da la eleccion de alguno de los tipos de fichas x o o
+        """
         simb = None
         while not simb:
             resp = input("Introduce el simbolo el simbolo para jugar 'X' o 'O' ? ")
@@ -26,6 +35,10 @@ class Juego():
             self.ficha2 = "X"
 
     def jugada_humano(self, ficha):
+        """
+        Mediante esta función se da la jugada que el humano va a realizar en un turno de la partida con el uso de las
+        filas y columnas del tablero
+        """
         jugada = False
         while not jugada:
             if ficha == self.ficha1:
@@ -44,12 +57,22 @@ class Juego():
         print()
 
     def insertar_ficha(self, i, j, ficha):
+        """
+        Esta funcion es propia del codigo donde se inserta la ficha en el tablero
+        """
         self.tablero.tablero[i][j] = ficha
 
     def eliminar_ficha(self, i, j):
+        """
+        Esta función se encarga de la eliminacion de una ficha dentro del tablero (funcion interina)
+        """
         self.tablero.tablero[i][j] = " "
 
     def jugada_facil(self):
+        """
+        La función permite que el cpu coloque de manera aleatoria una ficha en cualquier parte del tablero siendo el modo
+        facil del juego
+        """
         print("Turno de la computadora")
         casilla = (random.choice(self.tablero.casillas_libres()))
         if self.tablero.hay_casillas_libres():
@@ -59,7 +82,9 @@ class Juego():
         print("Turno de la computadora")
 
     def partida_facil(self):
-
+        """
+        Esta función permite la lógica que resulta de cualquier elección de la parte (facil) del juego
+        """
         self.elige_ficha()
         self.tablero.imprime()
         while not self.tablero.empate() and not self.tablero.gana():
@@ -75,6 +100,9 @@ class Juego():
         self.tablero.limpiaTablero()
 
     def partidaJvsJ(self):
+        """
+        Dicha función es la logica encargada de poner dos humanos a competir entre si
+        """
         self.elige_ficha()
         self.tablero.imprime()
         while not self.tablero.empate() and not self.tablero.gana():
@@ -92,6 +120,9 @@ class Juego():
         self.tablero.limpiaTablero()
 
     def partida_intermedia(self):
+        """
+        Esta función permite la lógica que resulta de cualquier elección de la parte (intermedia) del juego
+        """
         self.elige_ficha()
         self.tablero.imprime()
         while not self.tablero.empate() and not self.tablero.gana():
@@ -107,6 +138,10 @@ class Juego():
         self.tablero.limpiaTablero()
 
     def jugada_intermedio(self):
+        """
+        La función permite que el cpu coloque de manera aleatoria una ficha en cualquier parte del tablero siendo el modo
+        facil del juego
+        """
         print("Turno de la computadora")
         # Buscamos casillas para ganar
         tablero_aux = copy.deepcopy(self)

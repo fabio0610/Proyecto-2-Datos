@@ -1,5 +1,6 @@
 from Juego import Juego
-from sklearn import tree
+
+
 
 print("Bienvenido al juego de gato")
 print("\n\n\nElija una de las siguientes opciones: ")
