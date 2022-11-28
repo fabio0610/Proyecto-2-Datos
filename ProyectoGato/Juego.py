@@ -79,7 +79,49 @@ class Juego():
             self.insertar_ficha(casilla[0], casilla[1], self.ficha2)
 
     def jugada_dificil(self):
+        """
+        La función permite que el cpu coloque de manera que siempre bloqueara al humano y nunca lo dejara ganar
+        """
         print("Turno de la computadora")
+        # Buscamos casillas para ganar
+        tablero_aux = copy.deepcopy(self)
+        lista_gane = self.tablero.casillas_libres()  # Lista de casillas libres
+        for i in range(len(lista_gane)):
+            casilla_gane = lista_gane[i]
+            tablero_aux.insertar_ficha(casilla_gane[0], casilla_gane[1], tablero_aux.ficha2)
+            if tablero_aux.tablero.gana():
+                self.insertar_ficha(casilla_gane[0], casilla_gane[1], self.ficha2)
+                return
+            else:
+                tablero_aux.eliminar_ficha(casilla_gane[0], casilla_gane[1])
+        # Buscamos casillas para bloquear gane
+        tablero_aux = copy.deepcopy(self)
+        lista_bloqueo = self.tablero.casillas_libres()  # Lista de casillas libres
+        for i in range(len(lista_bloqueo)):
+            casillabloqueo = lista_bloqueo[i]
+            tablero_aux.insertar_ficha(casillabloqueo[0], casillabloqueo[1], tablero_aux.ficha1)
+            if tablero_aux.tablero.gana():
+                self.insertar_ficha(casillabloqueo[0], casillabloqueo[1], self.ficha2)
+                return
+            else:
+                tablero_aux.eliminar_ficha(casillabloqueo[0], casillabloqueo[1])
+
+        esquinas = [(0, 0), (0, 2), (2, 0), (2, 2)]
+        for i in range(len(esquinas)):
+            casilla_esquina = esquinas[i]
+            if self.tablero.casilla_vacia(casilla_esquina[0], casilla_esquina[1]):
+                self.insertar_ficha(casilla_esquina[0], casilla_esquina[1], self.ficha2)
+                return
+            if self.tablero.casilla_vacia(1, 1):
+                self.insertar_ficha(1, 1, self.ficha2)
+                return
+        lados = [(0, 1), (1, 1), (1, 2), (2, 1)]
+        for i in range(len(lados)):
+            casilla_lado = lados[i]
+            if self.tablero.casilla_vacia(casilla_lado[0], casilla_lado[1]):
+                self.insertar_ficha(casilla_lado[0], casilla_lado[1], self.ficha2)
+                self.tablero.imprime()
+                return
 
     def partida_facil(self):
         """
@@ -139,8 +181,7 @@ class Juego():
 
     def jugada_intermedio(self):
         """
-        La función permite que el cpu coloque de manera aleatoria una ficha en cualquier parte del tablero siendo el modo
-        facil del juego
+        La función permite que el cpu coloque de manera un poco más pensante en la que intente bloquear jugadas al humano
         """
         print("Turno de la computadora")
         # Buscamos casillas para ganar
@@ -172,3 +213,21 @@ class Juego():
         if self.tablero.hay_casillas_libres():
             self.insertar_ficha(casilla[0], casilla[1], self.ficha2)
         return
+
+    def partida_dificil(self):
+        """
+                Esta función permite la lógica que resulta de cualquier elección de la parte (dificil) del juego
+        """
+        self.elige_ficha()
+        self.tablero.imprime()
+        while not self.tablero.empate() and not self.tablero.gana():
+            if not self.tablero.empate() and not self.tablero.gana():
+                self.jugada_humano(self.ficha1)
+                self.tablero.imprime()
+                if self.tablero.gana(): print("HA GANADO EL JUGADOR 1")
+            if not self.tablero.empate() and not self.tablero.gana():
+                self.jugada_dificil()
+                self.tablero.imprime()
+                if self.tablero.gana(): print("HA GANADO CPU")
+
+        self.tablero.limpiaTablero()

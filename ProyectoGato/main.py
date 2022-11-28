@@ -38,8 +38,7 @@ while (True):
             elif (opcion == "2"):
                 Juego().partida_intermedia()
             elif (opcion == "3"):
-                #cambiar
-                print(" ")
+                Juego().partida_dificil()
             elif (opcion == "4"):
                 break
             else:
