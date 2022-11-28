@@ -8,6 +8,10 @@ import os
 
 class Tablero():
     def __init__(self):
+        """
+        Se crea el constructor que permite la elaboración del tablero del juego Gato
+        """
+
         self.ficha1 = " "
         self.ficha2 = " "
         self.tablero = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
@@ -21,14 +25,24 @@ class Tablero():
                 if self.casilla_vacia(i, j)]
 
     def limpiaTablero(self):
+        """
+        La función se encarga de dejar el tablero vacío
+        """
         self.tablero = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
 
     def empate(self):
+        """
+        Se realiza una verificación de que el tablero resulte en un empate
+        """
         if not self.gana() and not self.hay_casillas_libres():
             return True
         return False
 
     def gana(self):
+        """
+        En esta función se verifica en cada caso que se puede dar para que un jugador pueda declararse ganador y dicha
+        función se retornara verdadero en caso de cumplirse una condición o falso en caso de ninguna
+        """
         for i in range(3):
             horizontal = [self.tablero[i][j] for j in range(3)]
             if horizontal.count("X") == 3 or horizontal.count("O") == 3:
@@ -49,6 +63,9 @@ class Tablero():
         return False
 
     def hay_casillas_libres(self):
+        """
+        Se da una simple verificación de que hayan casillas libres en la totalidad el tablero
+        """
         if len(self.casillas_libres()) > 0:
             return True
         else:
@@ -65,4 +82,7 @@ class Tablero():
         print(" ", self.tablero[2][0], "|", self.tablero[2][1], "|", self.tablero[2][2])
 
     def casilla_vacia(self, fila, col):
+        """
+        Verificacion de una casilla vacia en específico
+        """
         return True if self.tablero[int(fila)][int(col)] == " " else False
