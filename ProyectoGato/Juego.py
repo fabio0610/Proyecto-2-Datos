@@ -1,6 +1,7 @@
 from Tablero import Tablero
 import copy
 import random
+
 class Juego():
 
     def __init__(self):

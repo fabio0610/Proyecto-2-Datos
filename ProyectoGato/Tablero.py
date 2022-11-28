@@ -5,7 +5,7 @@ import os
 
 
 
-# Se crea una clase en la que se realizará el desarrollo del tablero del gato
+
 class Tablero():
     def __init__(self):
         self.ficha1 = " "
@@ -59,9 +59,9 @@ class Tablero():
         Imprime el tablero
         """
         print(" ", self.tablero[0][0], "|", self.tablero[0][1], "|", self.tablero[0][2])
-        print("----+---+----");
+        print("----+---+----")
         print(" ", self.tablero[1][0], "|", self.tablero[1][1], "|", self.tablero[1][2])
-        print("----+---+----");
+        print("----+---+----")
         print(" ", self.tablero[2][0], "|", self.tablero[2][1], "|", self.tablero[2][2])
 
     def casilla_vacia(self, fila, col):
