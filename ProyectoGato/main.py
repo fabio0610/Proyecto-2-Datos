@@ -1,3 +1,5 @@
+from Juego import Juego
+
 
 print("Bienvenido al juego de gato")
 print("\n\n\nElija una de las siguientes opciones: ")
@@ -24,19 +26,16 @@ while (True):
     menu_principal()
     opcion = input("Ingrese una opcion: ")
     if (opcion == "1"):
-        #cambiar
-        print(" ")
+        Juego().partidaJvsJ()
     elif (opcion == "2"):
         print("\n\n")
         while (True):
             menu_CPU()
             opcion = input("Ingrese una opcion: ")
             if(opcion == "1"):
-                #cambiar
-                print(" ")
+                Juego().partida_facil()
             elif (opcion == "2"):
-                #cambiar
-                print(" ")
+                Juego().partida_intermedia()
             elif (opcion == "3"):
                 #cambiar
                 print(" ")
